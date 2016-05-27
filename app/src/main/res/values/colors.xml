@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <!--<color name="colorAccentAlpha">#9fFF4081</color>-->
+    <color name="colorPrimary">#fc8825</color>
+    <color name="colorPrimaryDark">#fc8825</color>
     <color name="colorAccent">#FF4081</color>
-
     <color name="colorAccentAlpha">#9fFF4081</color>
+    <color name="colorAppOrange">#fc8825</color>
+    <color name="colorAppOrangeAlpha">#9ffc8825</color>
 
     <color name="black">#000000</color>
     <color name="black_alpha">#333333</color>

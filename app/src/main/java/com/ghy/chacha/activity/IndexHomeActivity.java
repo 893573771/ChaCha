@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import com.ghy.baseapp.base.AbsBaseActivity;
 import com.ghy.baseapp.component.slidingmenu.SlidingMenu;
@@ -12,7 +13,6 @@ import com.ghy.chacha.R;
 import com.ghy.chacha.fragment.PagerFragment1;
 import com.ghy.chacha.fragment.PagerFragment2;
 import com.ghy.chacha.fragment.PagerFragment3;
-import com.ghy.chacha.fragment.PagerFragment4;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ import java.util.List;
  */
 public class IndexHomeActivity extends AbsBaseActivity {
 
-    private String[] mTitle = {"首页", "占位", "占位", "我"};
-    private int[] mIconSelect = {R.mipmap.tab_icon_home_select, R.mipmap.tab_icon_me_select, R.mipmap.tab_icon_me_select, R.mipmap.tab_icon_me_select};
-    private int[] mIconNormal = {R.mipmap.tab_icon_home, R.mipmap.tab_icon_me, R.mipmap.tab_icon_me, R.mipmap.tab_icon_me};
+    private String[] mTitle = {"首页", "查查", "我"};
+    private int[] mIconSelect = {R.mipmap.tab_icon_home_select, R.mipmap.tab_icon_search_select2, R.mipmap.tab_icon_me_select};
+    private int[] mIconNormal = {R.mipmap.tab_icon_home, R.mipmap.tab_icon_search, R.mipmap.tab_icon_me};
     private ViewPager mViewPager;
     private MyTabView mTabView;
 
@@ -57,11 +57,11 @@ public class IndexHomeActivity extends AbsBaseActivity {
      * 初始化ViewPager
      */
     private void initViewPager() {
+        mTabView = (MyTabView) findViewById(R.id.id_tab);
         mViewPager = (ViewPager) findViewById(R.id.id_view_pager);
         mViewPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
-        mViewPager.setOffscreenPageLimit(3);
-        mTabView = (MyTabView) findViewById(R.id.id_tab);
-        if (mTabView != null) mTabView.setViewPager(mViewPager);
+        mViewPager.setOffscreenPageLimit(2);
+        mTabView.setViewPager(mViewPager);
     }
 
     /**
@@ -88,8 +88,6 @@ public class IndexHomeActivity extends AbsBaseActivity {
         fragments.add(fragment2);
         Fragment fragment3 = new PagerFragment3();
         fragments.add(fragment3);
-        Fragment fragment4 = new PagerFragment4();
-        fragments.add(fragment4);
     }
 
     /**
@@ -124,6 +122,18 @@ public class IndexHomeActivity extends AbsBaseActivity {
         public int getCount() {
             return mTitle.length;
         }
+    }
+
+    private long firstClickTime;
+
+    @Override
+    public void onBackPressed() {
+        if (firstClickTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(IndexHomeActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+        }
+        firstClickTime = System.currentTimeMillis();
     }
 
 }
