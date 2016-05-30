@@ -11,7 +11,7 @@ public class MainActivity extends AbsBaseActivity {
 
     @Override
     protected String getToolBarTitle() {
-        return "你知道吗";
+        return "知道吗";
     }
 
     @Override

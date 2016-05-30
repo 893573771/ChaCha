@@ -21,7 +21,7 @@ import java.util.List;
  * 主界面
  * 使用fragment+viewPager的导航Tab Activity
  */
-public class IndexHomeActivity extends AbsBaseActivity {
+public class MainActivity extends AbsBaseActivity {
 
     private String[] mTitle = {"首页", "查查", "我"};
     private int[] mIconSelect = {R.mipmap.tab_icon_home_select, R.mipmap.tab_icon_search_select2, R.mipmap.tab_icon_me_select};
@@ -35,12 +35,37 @@ public class IndexHomeActivity extends AbsBaseActivity {
 
     @Override
     protected int getLayoutID() {
-        return R.layout.abs_index_home_activity;
+        return R.layout.main_activity;
     }
 
     @Override
     protected boolean isOpenToolBar() {
+        return true;
+    }
+
+    @Override
+    protected String getToolBarTitle() {
+        return "知道吗";
+    }
+
+    @Override
+    protected boolean isOpenToolBarLeftBack() {
         return false;
+    }
+
+    @Override
+    protected int setToolBarRightType() {
+        return TOOLBAR_RIGHT_TYPE_IV;
+    }
+
+    @Override
+    protected int setToolBarRightIv() {
+        return R.mipmap.user_setting;
+    }
+
+    @Override
+    protected String setToolBarRightIvTitle() {
+        return "设置";
     }
 
     @Override
@@ -131,7 +156,7 @@ public class IndexHomeActivity extends AbsBaseActivity {
         if (firstClickTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
         } else {
-            Toast.makeText(IndexHomeActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
         }
         firstClickTime = System.currentTimeMillis();
     }

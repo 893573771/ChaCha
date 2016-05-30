@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.ghy.baseapp.common.logger.Logger;
 import com.ghy.baseapp.utils.AnimUtils;
@@ -117,6 +118,15 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      */
     protected String getToolBarSubTitle() {
         return "";
+    }
+
+    /**
+     * 设置标题居中
+     *
+     * @return
+     */
+    protected String getToolBarCenterTitle() {
+        return null;
     }
 
     /**
@@ -331,12 +341,20 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      */
     private void initToolBar() {
         mToolbar = (Toolbar) findViewById(R.id.abs_base_toolbar);
-        mToolbar.setTitle(getToolBarTitle() != null ? getToolBarTitle() : "");
+        TextView tvCenterTitle = (TextView) findViewById(R.id.toolbar_center_title);
+        if (getToolBarCenterTitle() != null){
+            //标题居中
+            mToolbar.setTitle("");
+            if (tvCenterTitle != null) tvCenterTitle.setText(getToolBarCenterTitle());
+        }else {
+            //标题居左
+            mToolbar.setTitle(getToolBarTitle() != null ? getToolBarTitle() : "");
+        }
         mToolbar.setSubtitle(getToolBarSubTitle() != null ? getToolBarSubTitle() : "");
         mToolbar.setVisibility(isOpenToolBar() ? View.VISIBLE : View.GONE);
         setSupportActionBar(mToolbar);
         //是否开启返回箭头按钮
-        getSupportActionBar().setDisplayHomeAsUpEnabled(isOpenToolBarLeftBack());
+        if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(isOpenToolBarLeftBack());
     }
 
     /**
