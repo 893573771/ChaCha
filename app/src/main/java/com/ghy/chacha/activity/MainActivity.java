@@ -76,6 +76,20 @@ public class MainActivity extends AbsBaseActivity {
 
         initViewPager();
 
+        setRightSettingClick();
+
+    }
+
+    /**
+     * 右侧设置按钮图标点击事件
+     */
+    private void setRightSettingClick() {
+        setOnToolBarRightIvClickListener(new ToolBarRightIvClickListener() {
+            @Override
+            public void onToolBarRightIvClick() {
+                startActivity(MainActivity.this,SettingActivity.class);
+            }
+        });
     }
 
     /**

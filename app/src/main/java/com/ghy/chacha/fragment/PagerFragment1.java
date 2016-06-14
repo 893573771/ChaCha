@@ -1,6 +1,8 @@
 package com.ghy.chacha.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -8,6 +10,10 @@ import android.widget.TextView;
 import com.ghy.baseapp.base.AbsBaseFragment;
 import com.ghy.baseapp.utils.AnimUtils;
 import com.ghy.chacha.R;
+import com.ghy.chacha.activity.AirQualityActivity;
+import com.ghy.chacha.activity.HistoryTodayActivity;
+import com.ghy.chacha.activity.IdentityCardActivity;
+import com.ghy.chacha.activity.NumberBelongActivity;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -26,6 +32,8 @@ public class PagerFragment1 extends AbsBaseFragment {
     @Bind(R.id.home_fun4)
     TextView tvHomeFun4;
 
+    private long defaultDelayTime = 300;//触摸动画默认延迟时间
+
     @Override
     protected int getLayoutID() {
         return R.layout.fragment_pager1;
@@ -41,44 +49,59 @@ public class PagerFragment1 extends AbsBaseFragment {
     }
 
     @OnClick(R.id.home_fun1)
-    public void homeFun1(){
-
+    public void homeFun1() {
+        delayStartActivity(NumberBelongActivity.class);
     }
 
     @OnClick(R.id.home_fun2)
-    public void homeFun2(){
-
+    public void homeFun2() {
+        delayStartActivity(AirQualityActivity.class);
     }
 
     @OnClick(R.id.home_fun3)
-    public void homeFun3(){
-
+    public void homeFun3() {
+        delayStartActivity(IdentityCardActivity.class);
     }
 
     @OnClick(R.id.home_fun4)
-    public void homeFun4(){
+    public void homeFun4() {
+        delayStartActivity(HistoryTodayActivity.class);
+    }
 
+    /**
+     * 延时开启activity,等待触摸动画执行完毕
+     */
+    private void delayStartActivity(final Class<?> activity) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(getActivity(), activity));
+            }
+        }, defaultDelayTime * 2);
     }
 
 
-    private class MyTouchListener implements View.OnTouchListener{
+    private class MyTouchListener implements View.OnTouchListener {
         private View view;
+
         public MyTouchListener(View view) {
             this.view = view;
         }
+
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             int action = event.getAction();
-            switch (action){
+            switch (action) {
                 case MotionEvent.ACTION_DOWN:
-                    AnimUtils.scaleX1(view,400);
-                    AnimUtils.scaleY1(view,400);
-                    AnimUtils.rotation1(view,400);
+                    AnimUtils.touchAnimDown(view,defaultDelayTime);
                     break;
                 case MotionEvent.ACTION_UP:
-                    AnimUtils.scaleX2(view,400);
-                    AnimUtils.scaleY2(view,400);
-                    AnimUtils.rotation2(view,400);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            AnimUtils.touchAnimUp(view,defaultDelayTime);
+                        }
+                    }, defaultDelayTime);
                     break;
             }
             return false;

@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:drawableTop="@mipmap/icon_mobile"
-                    android:text="号码归属地"
+                    android:text="号码归属"
                     android:gravity="center"
                     android:layout_weight="1"
                     android:textColor="@color/black_alpha" />
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:drawableTop="@mipmap/icon_idcard"
-                    android:text="省份证查询"
+                    android:text="查身份证"
                     android:gravity="center"
                     android:layout_weight="1"
                     android:textColor="@color/black_alpha" />
