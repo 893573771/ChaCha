@@ -32,6 +32,8 @@ public class PagerFragment1 extends AbsBaseFragment {
     @Bind(R.id.home_fun4)
     TextView tvHomeFun4;
 
+    private View[] funViews = new View[4];
+
     private long defaultDelayTime = 300;//触摸动画默认延迟时间
 
     @Override
@@ -42,10 +44,19 @@ public class PagerFragment1 extends AbsBaseFragment {
 
     @Override
     protected void init(Bundle savedInstanceState, View contentView) {
-        tvHomeFun1.setOnTouchListener(new MyTouchListener(tvHomeFun1));
-        tvHomeFun2.setOnTouchListener(new MyTouchListener(tvHomeFun2));
-        tvHomeFun3.setOnTouchListener(new MyTouchListener(tvHomeFun3));
-        tvHomeFun4.setOnTouchListener(new MyTouchListener(tvHomeFun4));
+        tvHomeFun1.setOnTouchListener(new MyTouchListener(tvHomeFun1,0));
+        tvHomeFun2.setOnTouchListener(new MyTouchListener(tvHomeFun2,1));
+        tvHomeFun3.setOnTouchListener(new MyTouchListener(tvHomeFun3,2));
+        tvHomeFun4.setOnTouchListener(new MyTouchListener(tvHomeFun4,3));
+
+        initFunViews();
+    }
+
+    private void initFunViews() {
+        funViews[0] = tvHomeFun1;
+        funViews[1] = tvHomeFun2;
+        funViews[2] = tvHomeFun3;
+        funViews[3] = tvHomeFun4;
     }
 
     @OnClick(R.id.home_fun1)
@@ -83,9 +94,11 @@ public class PagerFragment1 extends AbsBaseFragment {
 
     private class MyTouchListener implements View.OnTouchListener {
         private View view;
+        private int position;
 
-        public MyTouchListener(View view) {
+        public MyTouchListener(View view,int position) {
             this.view = view;
+            this.position = position;
         }
 
         @Override
@@ -93,9 +106,15 @@ public class PagerFragment1 extends AbsBaseFragment {
             int action = event.getAction();
             switch (action) {
                 case MotionEvent.ACTION_DOWN:
+                    //触摸缩放动画
                     AnimUtils.touchAnimDown(view,defaultDelayTime);
+                    //抖动动画
+                    for (int i=0;i<funViews.length;i++){
+                        if (i != position) AnimUtils.touchAnimShake(funViews[i],100);
+                    }
                     break;
                 case MotionEvent.ACTION_UP:
+                    //抬起缩放动画
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
