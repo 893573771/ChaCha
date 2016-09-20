@@ -13,6 +13,7 @@ import com.ghy.chacha.R;
 import com.ghy.chacha.fragment.PagerFragment1;
 import com.ghy.chacha.fragment.PagerFragment2;
 import com.ghy.chacha.fragment.PagerFragment3;
+import com.ghy.chacha.helper.TitleHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class MainActivity extends AbsBaseActivity {
 
     @Override
     protected String getToolBarTitle() {
-        return "知道吗";
+        return TitleHelper.TITLE_APP_NAME;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class MainActivity extends AbsBaseActivity {
 
     @Override
     protected String setToolBarRightIvTitle() {
-        return "设置";
+        return TitleHelper.TITLE_SETTING;
     }
 
     @Override
