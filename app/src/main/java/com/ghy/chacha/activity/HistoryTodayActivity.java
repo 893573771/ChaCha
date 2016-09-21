@@ -8,7 +8,6 @@ import com.ghy.baseapp.api.RetrofitHelper;
 import com.ghy.baseapp.base.AbsBaseActivity;
 import com.ghy.baseapp.common.log.Log;
 import com.ghy.baseapp.common.utils.DateUtils;
-import com.ghy.baseapp.helper.ToastHelper;
 import com.ghy.chacha.R;
 import com.ghy.chacha.adapter.HisTodListAdapter;
 import com.ghy.chacha.api.APIS;
@@ -47,6 +46,7 @@ public class HistoryTodayActivity extends AbsBaseActivity {
     @Override
     protected void init() {
 
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
         //请求历史上的今天数据
         requestHisTodData();
 
@@ -74,24 +74,45 @@ public class HistoryTodayActivity extends AbsBaseActivity {
                 .subscribe(new Subscriber<HisTodBean>() {
                     @Override
                     public void onCompleted() {
-                        Log.i("RxJava----", "onCompleted");
+                        Log.i("RxJava----", "requestHisTodData--onCompleted");
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.e("RxJava----", "onError" + e.toString());
-                        ToastHelper.getInstance().showToast("请求出错");
+                        setActivityStatus(ACTIVITY_STATUS_ERROR);
                     }
 
                     @Override
                     public void onNext(HisTodBean hisTodBean) {
-
-                        HisTodListAdapter adapter = new HisTodListAdapter(HistoryTodayActivity.this,hisTodBean);
-                        mListView.setAdapter(adapter);
-                        mList = hisTodBean.getResult();
-
+                        if (hisTodBean == null ){
+                            setActivityStatus(ACTIVITY_STATUS_EMPTY);
+                        }else if (hisTodBean.getResult() == null || hisTodBean.getResult().size() == 0){
+                            setActivityStatus(ACTIVITY_STATUS_EMPTY);
+                        }else {
+                            setActivityStatus(ACTIVITY_STATUS_SUCCESS);
+                            //设置Adapter
+                            HisTodListAdapter adapter = new HisTodListAdapter(HistoryTodayActivity.this,hisTodBean);
+                            mListView.setAdapter(adapter);
+                            mList = hisTodBean.getResult();
+                        }
                     }
                 });
     }
 
+    @Override
+    protected void onEmptyClick(View view) {
+        super.onEmptyClick(view);
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
+        //重新请求历史上的今天数据
+        requestHisTodData();
+    }
+
+    @Override
+    protected void onErrorClick(View view) {
+        super.onErrorClick(view);
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
+        //重新请求历史上的今天数据
+        requestHisTodData();
+    }
 }

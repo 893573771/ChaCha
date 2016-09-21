@@ -5,7 +5,7 @@ package com.ghy.chacha.helper;
  */
 public class TitleHelper {
 
-    public static final String TITLE_APP_NAME = "知道";
+    public static final String TITLE_APP_NAME = "哒哒知道";
 
     public static final String TITLE_SETTING = "设置";
 
