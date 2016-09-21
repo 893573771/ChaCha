@@ -14,6 +14,7 @@ import com.ghy.chacha.activity.AirQualityActivity;
 import com.ghy.chacha.activity.HistoryTodayActivity;
 import com.ghy.chacha.activity.IdentityCardActivity;
 import com.ghy.chacha.activity.NumberBelongActivity;
+import com.ghy.chacha.activity.WeChatArticleActivity;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -32,6 +33,9 @@ public class PagerFragment1 extends AbsBaseFragment {
     @Bind(R.id.home_fun4)
     TextView tvHomeFun4;
 
+    @Bind(R.id.home_fun8)
+    TextView tvHomeFun8;
+
     private View[] funViews = new View[4];
 
     private long defaultDelayTime = 300;//触摸动画默认延迟时间
@@ -48,6 +52,8 @@ public class PagerFragment1 extends AbsBaseFragment {
         tvHomeFun2.setOnTouchListener(new MyTouchListener(tvHomeFun2));
         tvHomeFun3.setOnTouchListener(new MyTouchListener(tvHomeFun3));
         tvHomeFun4.setOnTouchListener(new MyTouchListener(tvHomeFun4));
+
+        tvHomeFun8.setOnTouchListener(new MyTouchListener(tvHomeFun8));
 
         initFunViews();
     }
@@ -77,6 +83,11 @@ public class PagerFragment1 extends AbsBaseFragment {
     @OnClick(R.id.home_fun4)
     public void homeFun4() {
         delayStartActivity(HistoryTodayActivity.class);
+    }
+
+    @OnClick(R.id.home_fun8)
+    public void homeFun8() {
+        delayStartActivity(WeChatArticleActivity.class);
     }
 
     /**

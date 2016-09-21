@@ -33,6 +33,8 @@
         <activity android:name=".activity.SettingActivity"/>
         <activity android:name=".activity.HistoryTodayDetailActivity">
         </activity>
+        <activity android:name=".activity.WeChatArticleActivity">
+        </activity>
     </application>
 
 </manifest>

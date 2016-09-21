@@ -19,4 +19,6 @@ public class TitleHelper {
 
     public static final String TITLE_HISTORY_TODAY_DETAIL = "事件详情";
 
+    public static final String TITLE_WE_CHAT = "微信精选";
+
 }
