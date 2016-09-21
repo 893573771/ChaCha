@@ -49,9 +49,10 @@ public class AnimUtils {
     public static void touchAnimDown(Object object, long duration) {
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(object, "scaleX", 1f, 0.8f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(object, "scaleY", 1f, 0.8f);
-        ObjectAnimator rotation = ObjectAnimator.ofFloat(object, "rotation", 0f, 10f);
+//        ObjectAnimator rotation = ObjectAnimator.ofFloat(object, "rotation", 0f, 10f);
         AnimatorSet animSet = new AnimatorSet();
-        animSet.play(scaleX).with(scaleY).with(rotation);
+//        animSet.play(scaleX).with(scaleY).with(rotation);
+        animSet.play(scaleX).with(scaleY);
         animSet.setDuration(duration);
         animSet.start();
     }
@@ -64,9 +65,10 @@ public class AnimUtils {
     public static void touchAnimUp(Object object, long duration) {
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(object, "scaleX", 0.8f, 1f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(object, "scaleY", 0.8f, 1f);
-        ObjectAnimator rotation = ObjectAnimator.ofFloat(object, "rotation", 10f, 0f);
+//        ObjectAnimator rotation = ObjectAnimator.ofFloat(object, "rotation", 10f, 0f);
         AnimatorSet animSet = new AnimatorSet();
-        animSet.play(scaleX).with(scaleY).with(rotation);
+//        animSet.play(scaleX).with(scaleY).with(rotation);
+        animSet.play(scaleX).with(scaleY);
         animSet.setDuration(duration);
         animSet.start();
     }

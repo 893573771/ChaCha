@@ -44,10 +44,10 @@ public class PagerFragment1 extends AbsBaseFragment {
 
     @Override
     protected void init(Bundle savedInstanceState, View contentView) {
-        tvHomeFun1.setOnTouchListener(new MyTouchListener(tvHomeFun1,0));
-        tvHomeFun2.setOnTouchListener(new MyTouchListener(tvHomeFun2,1));
-        tvHomeFun3.setOnTouchListener(new MyTouchListener(tvHomeFun3,2));
-        tvHomeFun4.setOnTouchListener(new MyTouchListener(tvHomeFun4,3));
+        tvHomeFun1.setOnTouchListener(new MyTouchListener(tvHomeFun1));
+        tvHomeFun2.setOnTouchListener(new MyTouchListener(tvHomeFun2));
+        tvHomeFun3.setOnTouchListener(new MyTouchListener(tvHomeFun3));
+        tvHomeFun4.setOnTouchListener(new MyTouchListener(tvHomeFun4));
 
         initFunViews();
     }
@@ -94,11 +94,9 @@ public class PagerFragment1 extends AbsBaseFragment {
 
     private class MyTouchListener implements View.OnTouchListener {
         private View view;
-        private int position;
 
-        public MyTouchListener(View view,int position) {
+        public MyTouchListener(View view) {
             this.view = view;
-            this.position = position;
         }
 
         @Override
@@ -108,10 +106,6 @@ public class PagerFragment1 extends AbsBaseFragment {
                 case MotionEvent.ACTION_DOWN:
                     //触摸缩放动画
                     AnimUtils.touchAnimDown(view,defaultDelayTime);
-                    //抖动动画
-                    for (int i=0;i<funViews.length;i++){
-                        if (i != position) AnimUtils.touchAnimShake(funViews[i],100);
-                    }
                     break;
                 case MotionEvent.ACTION_UP:
                     //抬起缩放动画
@@ -121,6 +115,9 @@ public class PagerFragment1 extends AbsBaseFragment {
                             AnimUtils.touchAnimUp(view,defaultDelayTime);
                         }
                     }, defaultDelayTime);
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    AnimUtils.touchAnimUp(view,defaultDelayTime);
                     break;
             }
             return false;

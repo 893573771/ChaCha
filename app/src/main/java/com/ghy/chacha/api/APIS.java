@@ -15,12 +15,6 @@ public class APIS {
 
 
     /**
-     * 邮编
-     */
-    public static final String POST_CODE = "postcode/query";
-
-
-    /**
      * 历史上的今天
      */
     public static final String HISTORY_TODAY = "appstore/history/query";

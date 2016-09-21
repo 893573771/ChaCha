@@ -13,7 +13,7 @@ import rx.Observable;
  */
 public interface ApiHisTodService {
 
-    @GET("appstore/history/query")
+    @GET(APIS.HISTORY_TODAY)
     Observable<HisTodBean> getHisTodInfo(@Query("key") String cityKey, @Query("day") String day);
 
 }

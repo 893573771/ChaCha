@@ -57,7 +57,7 @@ public class HisTodListAdapter extends BaseAdapter {
         tvtitle.setText(mList.get(position).getTitle());
         String date = mList.get(position).getDate().substring(0, 4);//截取年份19940921--1994
         int day = Integer.parseInt(date);
-        tvdate.setLabelText(day >= 1000 && day <= 2020 ? date : "未知");
+        tvdate.setLabelText(day >= 1000 && day <= 2100 ? date : "未知");
         tvcontent.setText(mList.get(position).getEvent());
 
         return convertView;
