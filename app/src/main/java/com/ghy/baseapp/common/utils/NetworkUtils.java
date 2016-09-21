@@ -3,11 +3,18 @@ package com.ghy.baseapp.common.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
 import com.ghy.baseapp.common.log.Log;
 
 import java.lang.reflect.Method;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 /**
  * 网络连接
@@ -299,5 +306,70 @@ public class NetworkUtils {
             default:
                 return NetWorkType.UnKnown;
         }
+    }
+
+    /**
+     * 获取当前ip地址
+     * WIFI环境
+     * @param context
+     * @return
+     */
+    public static String getLocalIpAddress(Context context) {
+        try {
+            WifiManager wifiManager = (WifiManager) context
+                    .getSystemService(Context.WIFI_SERVICE);
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+            int i = wifiInfo.getIpAddress();
+            return int2ip(i);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * 获取ip地址
+     * @return
+     */
+    public static String getHostIP() {
+
+        String hostIp = null;
+        try {
+            Enumeration nis = NetworkInterface.getNetworkInterfaces();
+            InetAddress ia;
+            while (nis.hasMoreElements()) {
+                NetworkInterface ni = (NetworkInterface) nis.nextElement();
+                Enumeration<InetAddress> ias = ni.getInetAddresses();
+                while (ias.hasMoreElements()) {
+                    ia = ias.nextElement();
+                    if (ia instanceof Inet6Address) {
+                        continue;// skip ipv6
+                    }
+                    String ip = ia.getHostAddress();
+                    if (!"127.0.0.1".equals(ip)) {
+                        hostIp = ia.getHostAddress();
+                        break;
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            Log.i("IpAddress", "SocketException");
+            e.printStackTrace();
+        }
+        return hostIp;
+    }
+
+    /**
+     * 将ip的整数形式转换成ip形式
+     *
+     * @param ipInt
+     * @return
+     */
+    public static String int2ip(int ipInt) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(ipInt & 0xFF).append(".");
+        sb.append((ipInt >> 8) & 0xFF).append(".");
+        sb.append((ipInt >> 16) & 0xFF).append(".");
+        sb.append((ipInt >> 24) & 0xFF);
+        return sb.toString();
     }
 }

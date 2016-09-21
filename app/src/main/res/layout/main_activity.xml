@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:background="#eeeeee"
         android:orientation="horizontal"
-        ghy:item_padding="10dp"
+        ghy:item_padding="8dp"
         ghy:text_normal_color="#777777"
         ghy:text_select_color="#fc8825"
         ghy:text_size="10sp" />

@@ -1,13 +1,14 @@
 package com.ghy.chacha.activity;
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 
 import com.ghy.baseapp.base.AbsBaseActivity;
 import com.ghy.baseapp.component.slidingmenu.SlidingMenu;
+import com.ghy.baseapp.utils.SnackbarUtils;
 import com.ghy.baseapp.view.MyTabView;
 import com.ghy.chacha.R;
 import com.ghy.chacha.fragment.PagerFragment1;
@@ -88,7 +89,7 @@ public class MainActivity extends AbsBaseActivity {
         setOnToolBarRightIvClickListener(new ToolBarRightIvClickListener() {
             @Override
             public void onToolBarRightIvClick() {
-                startActivity(MainActivity.this,SettingActivity.class);
+                startActivity(MainActivity.this, SettingActivity.class);
             }
         });
     }
@@ -171,7 +172,8 @@ public class MainActivity extends AbsBaseActivity {
         if (firstClickTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
         } else {
-            Toast.makeText(MainActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+            SnackbarUtils.ShortSnackbar(mTabView,"再按一次退出应用", Color.parseColor("#ffffff"),Color.parseColor("#fc8825")).show();
+//            Toast.makeText(MainActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
         }
         firstClickTime = System.currentTimeMillis();
     }

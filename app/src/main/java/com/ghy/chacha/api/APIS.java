@@ -6,11 +6,22 @@ package com.ghy.chacha.api;
  */
 public class APIS {
 
-    public static final String BASE_URL = "http://apicloud.mob.com/v1/";
+    public static final String BASE_URL = "http://apicloud.mob.com/";
+
+    /**
+     * APP KEY
+     */
+    public static final String APPKEY = "133df0f3cd5d8";
 
 
     /**
      * 邮编
      */
     public static final String POST_CODE = "postcode/query";
+
+
+    /**
+     * 历史上的今天
+     */
+    public static final String HISTORY_TODAY = "appstore/history/query";
 }
