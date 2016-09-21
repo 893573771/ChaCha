@@ -17,4 +17,6 @@ public class TitleHelper {
 
     public static final String TITLE_HISTORY_TODAY = "历史上的今天";
 
+    public static final String TITLE_HISTORY_TODAY_DETAIL = "事件详情";
+
 }

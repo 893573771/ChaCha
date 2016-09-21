@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ghy.baseapp.adapter.ViewHolder;
+import com.ghy.baseapp.component.labelview.LabelTextView;
 import com.ghy.chacha.R;
 import com.ghy.chacha.bean.HisTodBean;
 
@@ -49,14 +50,15 @@ public class HisTodListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_his_tod_list, null);
         }
 
-        TextView tvtitle = ViewHolder.get(convertView,R.id.tv_his_tod_title);
-        TextView tvdate = ViewHolder.get(convertView,R.id.tv_his_tod_date);
-        TextView tvcontent = ViewHolder.get(convertView,R.id.tv_his_tod_content);
+        TextView tvtitle = ViewHolder.get(convertView, R.id.tv_his_tod_title);
+        LabelTextView tvdate = ViewHolder.get(convertView, R.id.tv_his_tod_date);
+        TextView tvcontent = ViewHolder.get(convertView, R.id.tv_his_tod_content);
 
         tvtitle.setText(mList.get(position).getTitle());
-        tvdate.setText(mList.get(position).getDate());
+        String date = mList.get(position).getDate().substring(0, 4);//截取年份19940921--1994
+        int day = Integer.parseInt(date);
+        tvdate.setLabelText(day >= 1000 && day <= 2020 ? date : "未知");
         tvcontent.setText(mList.get(position).getEvent());
-
 
         return convertView;
     }

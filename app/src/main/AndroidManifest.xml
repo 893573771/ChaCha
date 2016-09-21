@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ghy.chacha">
+          package="com.ghy.chacha">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -18,22 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity"/>
-
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.NumberBelongActivity" />
-        <activity android:name=".activity.AirQualityActivity" />
-        <activity android:name=".activity.IdentityCardActivity" />
-        <activity android:name=".activity.HistoryTodayActivity" />
-        <activity android:name=".activity.SettingActivity"></activity>
+        <activity android:name=".activity.NumberBelongActivity"/>
+        <activity android:name=".activity.AirQualityActivity"/>
+        <activity android:name=".activity.IdentityCardActivity"/>
+        <activity android:name=".activity.HistoryTodayActivity"/>
+        <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.HistoryTodayDetailActivity">
+        </activity>
     </application>
 
 </manifest>

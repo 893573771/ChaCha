@@ -42,6 +42,11 @@ public class DateUtils {
     public static final String dateFormatMD = "MM/dd";
 
     /**
+     * 时间日期格式化到月日.
+     */
+    public static final String dateFormatMMDD = "MMdd";
+
+    /**
      * 时分秒.
      */
     public static final String dateFormatHMS = "HH:mm:ss";
