@@ -14,6 +14,7 @@ import com.ghy.chacha.activity.AirQualityActivity;
 import com.ghy.chacha.activity.HistoryTodayActivity;
 import com.ghy.chacha.activity.IdentityCardActivity;
 import com.ghy.chacha.activity.NumberBelongActivity;
+import com.ghy.chacha.activity.OilTodayActivity;
 import com.ghy.chacha.activity.WeChatArticleActivity;
 
 import butterknife.Bind;
@@ -38,6 +39,8 @@ public class PagerFragment2 extends AbsBaseFragment {
     @Bind(R.id.home_fun4)
     TextView tvHomeFun4;
 
+    @Bind(R.id.home_fun7)
+    TextView tvHomeFun7;
     @Bind(R.id.home_fun8)
     TextView tvHomeFun8;
 
@@ -58,6 +61,7 @@ public class PagerFragment2 extends AbsBaseFragment {
         tvHomeFun3.setOnTouchListener(new PagerFragment2.MyTouchListener(tvHomeFun3));
         tvHomeFun4.setOnTouchListener(new PagerFragment2.MyTouchListener(tvHomeFun4));
 
+        tvHomeFun7.setOnTouchListener(new PagerFragment2.MyTouchListener(tvHomeFun7));
         tvHomeFun8.setOnTouchListener(new PagerFragment2.MyTouchListener(tvHomeFun8));
 
     }
@@ -80,6 +84,11 @@ public class PagerFragment2 extends AbsBaseFragment {
     @OnClick(R.id.home_fun4)
     public void homeFun4() {
         delayStartActivity(HistoryTodayActivity.class);
+    }
+
+    @OnClick(R.id.home_fun7)
+    public void homeFun7() {
+        delayStartActivity(OilTodayActivity.class);
     }
 
     @OnClick(R.id.home_fun8)

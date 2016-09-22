@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/oil_price_fg_layout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/common_background_grey"
+              android:orientation="vertical">
+
+    <!-- 顶部布局-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dimen_20">
+
+
+        <LinearLayout
+            android:id="@+id/oil_price_city_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_20"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前地区："/>
+
+            <TextView
+                android:id="@+id/oil_price_tv_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="北京"
+                android:textColor="@color/colorAppOrange"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_15"
+                android:text="点击切换地区"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 油价布局-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- 90#汽油 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_40"
+                android:layout_marginRight="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_50"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/oil_price_layout_90"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/oil_petrol_price_background"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/oil_price_90"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/dimen_60"
+                        android:text="0.00"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginLeft="@dimen/dimen_4"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/dimen_60"
+                        android:text="元/升"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_60"
+                    android:layout_height="@dimen/dimen_60"
+                    android:layout_marginRight="-30dp"
+                    android:layout_toLeftOf="@+id/oil_price_layout_90"
+                    android:background="@mipmap/oil_price_petrol_bg"
+                    android:gravity="center"
+                    android:text="90#"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_60"
+                    android:layout_height="@dimen/dimen_60"
+                    android:layout_marginLeft="-30dp"
+                    android:layout_toRightOf="@+id/oil_price_layout_90"
+                    android:background="@mipmap/oil_price_petrol_bg"
+                    android:gravity="center"
+                    android:text="汽油"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
+
+            <!-- 93#汽油 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_40"
+                android:layout_marginRight="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/oil_price_layout_93"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/oil_petrol_price_background"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/oil_price_93"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/dimen_60"
+                        android:text="0.00"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginLeft="@dimen/dimen_4"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/dimen_60"
+                        android:text="元/升"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_60"
+                    android:layout_height="@dimen/dimen_60"
+                    android:layout_marginRight="-30dp"
+                    android:layout_toLeftOf="@+id/oil_price_layout_93"
+                    android:background="@mipmap/oil_price_petrol_bg"
+                    android:gravity="center"
+                    android:text="93#"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_60"
+                    android:layout_height="@dimen/dimen_60"
+                    android:layout_marginLeft="-30dp"
+                    android:layout_toRightOf="@+id/oil_price_layout_93"
+                    android:background="@mipmap/oil_price_petrol_bg"
+                    android:gravity="center"
+                    android:text="汽油"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
+
+            <!-- 96#汽油 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_40"
+                android:layout_marginRight="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/oil_price_layout_97"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/oil_petrol_price_background"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/oil_price_97"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/dimen_60"
+                        android:text="0.00"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginLeft="@dimen/dimen_4"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/dimen_60"
+                        android:text="元/升"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_60"
+                    android:layout_height="@dimen/dimen_60"
+                    android:layout_marginRight="-30dp"
+                    android:layout_toLeftOf="@+id/oil_price_layout_97"
+                    android:background="@mipmap/oil_price_petrol_bg"
+                    android:gravity="center"
+                    android:text="97#"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_60"
+                    android:layout_height="@dimen/dimen_60"
+                    android:layout_marginLeft="-30dp"
+                    android:layout_toRightOf="@+id/oil_price_layout_97"
+                    android:background="@mipmap/oil_price_petrol_bg"
+                    android:gravity="center"
+                    android:text="汽油"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
+
+            <!-- 0#柴油 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_40"
+                android:layout_marginRight="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/oil_price_layout_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/oil_diesel_price_background"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/oil_price_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/dimen_60"
+                        android:text="0.00"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginLeft="@dimen/dimen_4"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/dimen_60"
+                        android:text="元/升"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_60"
+                    android:layout_height="@dimen/dimen_60"
+                    android:layout_marginRight="-30dp"
+                    android:layout_toLeftOf="@+id/oil_price_layout_0"
+                    android:background="@mipmap/oil_price_diesel_bg"
+                    android:gravity="center"
+                    android:text="0#"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_60"
+                    android:layout_height="@dimen/dimen_60"
+                    android:layout_marginLeft="-30dp"
+                    android:layout_toRightOf="@+id/oil_price_layout_0"
+                    android:background="@mipmap/oil_price_diesel_bg"
+                    android:gravity="center"
+                    android:text="柴油"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

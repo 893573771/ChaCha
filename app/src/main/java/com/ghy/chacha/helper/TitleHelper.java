@@ -21,4 +21,6 @@ public class TitleHelper {
 
     public static final String TITLE_WE_CHAT = "微信精选";
 
+    public static final String TITLE_OIL_TODAY = "今日油价";
+
 }

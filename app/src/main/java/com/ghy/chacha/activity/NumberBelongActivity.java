@@ -13,6 +13,7 @@ import com.ghy.baseapp.api.RetrofitHelper;
 import com.ghy.baseapp.base.AbsBaseActivity;
 import com.ghy.baseapp.common.log.Log;
 import com.ghy.baseapp.utils.AnimUtils;
+import com.ghy.baseapp.utils.ImeUtils;
 import com.ghy.baseapp.utils.SnackbarUtils;
 import com.ghy.chacha.R;
 import com.ghy.chacha.api.APIS;
@@ -91,6 +92,8 @@ public class NumberBelongActivity extends AbsBaseActivity {
         } else if (length < 7 || length > 11) {
             SnackbarUtils.showSnackbarDefault(btnChaXun, "手机号码有误，请重新输入！").show();
         } else {
+            //隐藏软键盘
+            ImeUtils.hideSoftKeyboard(etPhoneNumber);
             //请求数据
             requestPhoneApi(etPhoneNumber.getText().toString());
         }

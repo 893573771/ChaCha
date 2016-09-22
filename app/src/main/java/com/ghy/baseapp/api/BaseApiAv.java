@@ -35,12 +35,12 @@ public abstract class BaseApiAv<T extends Activity, K extends ResponseData> {
 
     /**
      * 设置 发送请求方法
-     * 默认为post
+     * 默认为get
      *
      * @return
      */
     public int getRequestMethod() {
-        return REQUEST_METHOD_POST;
+        return REQUEST_METHOD_GET;
     }
 
     /**

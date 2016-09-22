@@ -24,4 +24,10 @@ public class APIS {
      */
     public static final String NUMBER_BELONG = "v1/mobile/address/query";
 
+    /**
+     * 今日油价
+     */
+    public static final String OIL_TODAY = "oil/price/province/query";
+
+
 }

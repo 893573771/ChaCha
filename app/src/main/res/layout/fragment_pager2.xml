@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:drawableTop="@mipmap/icon_idcard"
-                    android:text="查身份证"
+                    android:text="今日油价"
                     android:gravity="center"
                     android:layout_weight="1"
                     android:background="@color/mistyrose"

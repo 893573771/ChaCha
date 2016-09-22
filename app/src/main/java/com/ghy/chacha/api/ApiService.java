@@ -2,6 +2,7 @@ package com.ghy.chacha.api;
 
 import com.ghy.chacha.bean.HisTodBean;
 import com.ghy.chacha.bean.NumberBelongBean;
+import com.ghy.chacha.bean.OilPriceBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -34,6 +35,17 @@ public class ApiService {
 
         @GET(APIS.NUMBER_BELONG)
         Observable<NumberBelongBean> getPhoneInfo(@Query("key") String appKey, @Query("phone") String phoneNumber);
+
+    }
+
+    /**
+     * 今日油价api接口
+     * http://apicloud.mob.com/oil/price/province/query?key=appkey
+     */
+    public interface OilTodayService {
+
+        @GET(APIS.OIL_TODAY)
+        Observable<OilPriceBean> getOilPriceInfo(@Query("key") String appKey);
 
     }
 }

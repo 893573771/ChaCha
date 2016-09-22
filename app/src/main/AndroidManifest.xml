@@ -35,6 +35,8 @@
         </activity>
         <activity android:name=".activity.WeChatArticleActivity">
         </activity>
+        <activity android:name=".activity.OilTodayActivity">
+        </activity>
     </application>
 
 </manifest>
