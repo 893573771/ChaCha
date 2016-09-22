@@ -8,6 +8,7 @@ import com.ghy.baseapp.api.RetrofitHelper;
 import com.ghy.baseapp.base.AbsBaseActivity;
 import com.ghy.baseapp.common.log.Log;
 import com.ghy.baseapp.common.utils.DateUtils;
+import com.ghy.baseapp.common.utils.NetworkUtils;
 import com.ghy.chacha.R;
 import com.ghy.chacha.adapter.HisTodListAdapter;
 import com.ghy.chacha.api.APIS;
@@ -80,7 +81,11 @@ public class HistoryTodayActivity extends AbsBaseActivity {
                     @Override
                     public void onError(Throwable e) {
                         Log.e("RxJava----", "onError" + e.toString());
-                        setActivityStatus(ACTIVITY_STATUS_ERROR);
+                        if (NetworkUtils.isAvailable(HistoryTodayActivity.this)){
+                            setActivityStatus(ACTIVITY_STATUS_NO_NET);
+                        }else {
+                            setActivityStatus(ACTIVITY_STATUS_ERROR);
+                        }
                     }
 
                     @Override
@@ -98,6 +103,14 @@ public class HistoryTodayActivity extends AbsBaseActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    protected void onNoNetClick(View view) {
+        super.onNoNetClick(view);
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
+        //重新请求历史上的今天数据
+        requestHisTodData();
     }
 
     @Override

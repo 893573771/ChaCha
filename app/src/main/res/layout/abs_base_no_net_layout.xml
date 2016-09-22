@@ -17,7 +17,7 @@
         android:layout_below="@+id/iv_base_status_refresh"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="无网络连接，点击重试"
+        android:text="网络错误，点击重试"
         android:textColor="@color/black_alpha"
         android:textSize="16sp" />
 

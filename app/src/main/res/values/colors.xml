@@ -6,8 +6,8 @@
     <!--<color name="colorAccentAlpha">#9fFF4081</color>-->
     <color name="colorPrimary">#fc8825</color>
     <color name="colorPrimaryDark">#fc8825</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorAccentAlpha">#9fFF4081</color>
+    <color name="colorAccent">#fc8825</color>
+    <color name="colorAccentAlpha">#9ffc8825</color>
     <color name="colorAppOrange">#fc8825</color>
     <color name="colorAppOrangeAlpha">#9ffc8825</color>
 
