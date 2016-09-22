@@ -91,4 +91,15 @@ public class AnimUtils {
         animSet.start();
     }
 
+    /**
+     * 号码归属进入动画
+     *
+     * @param duration
+     */
+    public static void phoneInfoEnterAnim(Object object, long duration) {
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(object, "translationY", 720f, 0f);
+        objectAnimator.setDuration(duration);
+        objectAnimator.start();
+    }
+
 }

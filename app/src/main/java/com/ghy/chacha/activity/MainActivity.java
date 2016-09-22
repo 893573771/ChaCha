@@ -1,6 +1,5 @@
 package com.ghy.chacha.activity;
 
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -172,7 +171,7 @@ public class MainActivity extends AbsBaseActivity {
         if (firstClickTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
         } else {
-            SnackbarUtils.ShortSnackbar(mTabView,"再按一次退出应用", Color.parseColor("#ffffff"),Color.parseColor("#fc8825")).show();
+            SnackbarUtils.showSnackbarDefault(mTabView,"再按一次退出应用").show();
 //            Toast.makeText(MainActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
         }
         firstClickTime = System.currentTimeMillis();

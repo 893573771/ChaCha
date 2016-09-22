@@ -12,7 +12,7 @@ import com.ghy.baseapp.common.utils.NetworkUtils;
 import com.ghy.chacha.R;
 import com.ghy.chacha.adapter.HisTodListAdapter;
 import com.ghy.chacha.api.APIS;
-import com.ghy.chacha.api.ApiHisTodService;
+import com.ghy.chacha.api.ApiService;
 import com.ghy.chacha.bean.HisTodBean;
 import com.ghy.chacha.helper.TitleHelper;
 
@@ -68,7 +68,8 @@ public class HistoryTodayActivity extends AbsBaseActivity {
      **/
     private void requestHisTodData() {
 
-        ApiHisTodService api = RetrofitHelper.getRetrofit().create(ApiHisTodService.class);
+
+        ApiService.ApiHisTodService api = RetrofitHelper.getRetrofit().create(ApiService.ApiHisTodService.class);
         Observable<HisTodBean> observable = api.getHisTodInfo(APIS.APPKEY, DateUtils.getCurrentDate(DateUtils.dateFormatMMDD));
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

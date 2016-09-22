@@ -18,4 +18,10 @@ public class APIS {
      * 历史上的今天
      */
     public static final String HISTORY_TODAY = "appstore/history/query";
+
+    /**
+     * 手机号码归属
+     */
+    public static final String NUMBER_BELONG = "v1/mobile/address/query";
+
 }
