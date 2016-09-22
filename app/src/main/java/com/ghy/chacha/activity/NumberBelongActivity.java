@@ -86,14 +86,15 @@ public class NumberBelongActivity extends AbsBaseActivity {
     @OnClick(R.id.btn_chaxun)
     public void clickChaXun() {
 
+        //隐藏软键盘
+        ImeUtils.hideSoftKeyboard(etPhoneNumber);
+
         int length = etPhoneNumber.getText().length();
         if (length == 0) {
             SnackbarUtils.showSnackbarDefault(btnChaXun, "手机号码不能为空！").show();
         } else if (length < 7 || length > 11) {
             SnackbarUtils.showSnackbarDefault(btnChaXun, "手机号码有误，请重新输入！").show();
         } else {
-            //隐藏软键盘
-            ImeUtils.hideSoftKeyboard(etPhoneNumber);
             //请求数据
             requestPhoneApi(etPhoneNumber.getText().toString());
         }
