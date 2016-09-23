@@ -48,7 +48,7 @@
             android:gravity="center_vertical"
             android:imeOptions="actionDone"
             android:inputType="phone"
-            android:maxLines="1"
+            android:maxLength="11"
             android:paddingLeft="@dimen/dimen_14"
             android:textColor="@color/colorAppOrange"
             android:textSize="20sp"/>

@@ -3,7 +3,9 @@ package com.ghy.chacha.activity;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -74,6 +76,23 @@ public class NumberBelongActivity extends AbsBaseActivity {
 
         //添加输入监听
         etPhoneNumber.addTextChangedListener(new MyTextWatcher());
+
+        //键盘完成按钮(done)事件
+        etPhoneNumber.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                    InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    //查询手机号归属
+                    clickChaXun();
+                    return true;
+                }
+                return false;
+            }
+
+        });
 
     }
 
@@ -213,9 +232,6 @@ public class NumberBelongActivity extends AbsBaseActivity {
                         tvNumberRec.setTextColor(Color.parseColor("#FC8825"));
                     }
                 }
-            } else if (length > 11) {
-                tvNumberRec.setText("您输入的手机号码位数过长！");
-                tvNumberRec.setTextColor(Color.parseColor("#FF4500"));
             }
 
         }
