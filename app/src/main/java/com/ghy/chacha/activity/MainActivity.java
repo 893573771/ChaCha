@@ -25,7 +25,7 @@ import java.util.List;
 public class MainActivity extends AbsBaseActivity {
 
     private String[] mTitle = {"哒哒", "知道", "我的"};
-    private int[] mIconSelect = {R.mipmap.tab_icon_home_select, R.mipmap.tab_icon_search_select2, R.mipmap.tab_icon_me_select};
+    private int[] mIconSelect = {R.mipmap.tab_icon_home_select, R.mipmap.tab_icon_search_select, R.mipmap.tab_icon_me_select};
     private int[] mIconNormal = {R.mipmap.tab_icon_home, R.mipmap.tab_icon_search, R.mipmap.tab_icon_me};
     private ViewPager mViewPager;
     private MyTabView mTabView;

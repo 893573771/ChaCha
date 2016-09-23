@@ -36,16 +36,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:drawableTop="@mipmap/icon_mobile"
+                    android:drawableTop="@mipmap/icon_phone"
+                    android:drawablePadding="@dimen/dimen_5"
                     android:text="号码归属"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/thistle"
+                    android:background="@color/mistyrose"
                     android:textColor="@color/black_alpha" />
                 <View
                     android:layout_width="@dimen/dimen_0.5"
                     android:layout_height="match_parent"
-                    android:background="@color/common_view_grey"/>
+                    android:background="@color/white"/>
 
                 <TextView
                     android:id="@+id/home_fun2"
@@ -53,15 +54,16 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:drawableTop="@mipmap/icon_environment"
+                    android:drawablePadding="@dimen/dimen_5"
                     android:text="空气质量"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/thistle"
+                    android:background="@color/mistyrose"
                     android:textColor="@color/black_alpha" />
                 <View
                     android:layout_width="@dimen/dimen_0.5"
                     android:layout_height="match_parent"
-                    android:background="@color/common_view_grey"/>
+                    android:background="@color/white"/>
 
                 <TextView
                     android:id="@+id/home_fun3"
@@ -69,25 +71,27 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:drawableTop="@mipmap/icon_idcard"
+                    android:drawablePadding="@dimen/dimen_5"
                     android:text="查身份证"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/thistle"
+                    android:background="@color/mistyrose"
                     android:textColor="@color/black_alpha" />
                 <View
                     android:layout_width="@dimen/dimen_0.5"
                     android:layout_height="match_parent"
-                    android:background="@color/common_view_grey"/>
+                    android:background="@color/white"/>
                 <TextView
                     android:id="@+id/home_fun4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:drawableTop="@mipmap/icon_history"
+                    android:drawablePadding="@dimen/dimen_5"
                     android:text="历史今天"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:background="@color/thistle"
+                    android:background="@color/mistyrose"
                     android:textColor="@color/black_alpha" />
             </LinearLayout>
 
@@ -101,8 +105,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:drawableTop="@mipmap/icon_mobile"
-                    android:text="号码归属"
+                    android:drawableTop="@mipmap/icon_car"
+                    android:drawablePadding="@dimen/dimen_5"
+                    android:text="汽车信息"
                     android:gravity="center"
                     android:layout_weight="1"
                     android:background="@color/mistyrose"
@@ -117,8 +122,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:drawableTop="@mipmap/icon_environment"
-                    android:text="空气质量"
+                    android:drawableTop="@mipmap/icon_train"
+                    android:drawablePadding="@dimen/dimen_5"
+                    android:text="查火车票"
                     android:gravity="center"
                     android:layout_weight="1"
                     android:background="@color/mistyrose"
@@ -133,7 +139,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:drawableTop="@mipmap/icon_idcard"
+                    android:drawableTop="@mipmap/icon_oil"
+                    android:drawablePadding="@dimen/dimen_5"
                     android:text="今日油价"
                     android:gravity="center"
                     android:layout_weight="1"
@@ -149,6 +156,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:drawableTop="@mipmap/icon_wxarticle"
+                    android:drawablePadding="@dimen/dimen_5"
                     android:text="微信精选"
                     android:layout_weight="1"
                     android:gravity="center"

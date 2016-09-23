@@ -38,6 +38,8 @@
 
     <color name="slid_menu_grey">#EDEDEB</color>
     <color name="oilPriceBlue">#529bff</color>
+    <color name="colorBlue">#529bff</color>
+    <color name="colorBlueAlpha">#9f529bff</color>
 
     <!-- 颜色色值-->
     <color name="ivory">#FFFFF0</color><!--象牙色 -->
