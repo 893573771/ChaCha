@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -72,6 +73,12 @@ public class OilTodayActivity extends AbsBaseActivity {
     TextView oilPrice0;
 
     /**
+     * 提示信息
+     */
+    @Bind(R.id.oil_notice)
+    TextView oilNotice;
+
+    /**
      * 选择城市按钮
      */
     private TextView tvProvinceDone;
@@ -122,6 +129,7 @@ public class OilTodayActivity extends AbsBaseActivity {
     @Override
     protected void init() {
 
+        //获取保存的省份信息
         saveProvince = SPUtils.getString(OilTodayActivity.this, SPKeyHelper.KEY_OIL_PROVINCE);
         if (TextUtils.isEmpty(saveProvince)){
             setProvinceTextView(provinceArray[2]);
@@ -200,6 +208,20 @@ public class OilTodayActivity extends AbsBaseActivity {
         popupWindow.setAnimationStyle(R.style.AnimationPopupWindow);
         popupWindow.showAtLocation(findViewById(R.id.oil_price_fg_layout),
                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+
+        //设置背景颜色变暗
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = 0.5f;
+        getWindow().setAttributes(lp);
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                WindowManager.LayoutParams lp = getWindow().getAttributes();
+                lp.alpha = 1f;
+                getWindow().setAttributes(lp);
+            }
+        });
+
         //加载省份列表
         initWheelView(wheelView);
     }
@@ -212,7 +234,7 @@ public class OilTodayActivity extends AbsBaseActivity {
 
         //根据点选的省份获取其在数组中的位置
         saveProvince = SPUtils.getString(OilTodayActivity.this, SPKeyHelper.KEY_OIL_PROVINCE);
-        if (saveProvince == null || saveProvince.equals("")) {
+        if (TextUtils.isEmpty(saveProvince)) {
             saveProvinceLocation = 1;
         } else {
             for (int i = 0; i < provinceArray.length; i++) {
@@ -260,7 +282,7 @@ public class OilTodayActivity extends AbsBaseActivity {
     }
 
     /**
-     * 设置省份信息
+     * 设置选中省份文本信息（标下划线）
      *
      * @param province
      */
@@ -285,6 +307,9 @@ public class OilTodayActivity extends AbsBaseActivity {
     private void setSaveProvinceOilPrice(OilPriceBean oilPriceBean) {
 
         this.mOilPriceBean = oilPriceBean;
+
+        //京沪油价提示信息默认不可见
+        oilNotice.setVisibility(View.GONE);
 
         saveProvince = SPUtils.getString(OilTodayActivity.this, SPKeyHelper.KEY_OIL_PROVINCE);
         if (TextUtils.isEmpty(saveProvince)){
@@ -496,6 +521,19 @@ public class OilTodayActivity extends AbsBaseActivity {
                 oilPrice93.setText("0.00");
                 oilPrice97.setText("0.00");
                 oilPrice0.setText("0.00");
+            }
+
+            //京沪油价提示
+            if (!TextUtils.isEmpty(saveProvince)){
+
+                if (saveProvince.equals("北京")){
+                    oilNotice.setVisibility(View.VISIBLE);
+                    oilNotice.setText("注：90#(京89号)、93#(京92号)、97#(京95号)");
+                }else if (saveProvince.equals("上海")){
+                    oilNotice.setVisibility(View.VISIBLE);
+                    oilNotice.setText("注：90#(沪89号)、93#(沪92号)、97#(沪95号)");
+                }
+
             }
         }
 

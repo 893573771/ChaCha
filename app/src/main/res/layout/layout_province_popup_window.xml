@@ -25,7 +25,7 @@
         android:id="@+id/oil_province_select_done"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_44"
-        android:background="@color/common_background_grey"
+        android:background="@drawable/btn_bg_selector_gray"
         android:gravity="center"
         android:textColor="@color/colorAppOrange"
         android:textStyle="bold"
