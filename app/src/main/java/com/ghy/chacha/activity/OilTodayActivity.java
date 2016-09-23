@@ -316,13 +316,26 @@ public class OilTodayActivity extends AbsBaseActivity {
             //没有保存的省份默认为北京
             //强转处理，保留小数点后两位
             DecimalFormat df = new DecimalFormat("0.00");
-            //5.2(京89号)截取5.2
-            oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,4).contains("(")?
-                    oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,4))));
-            oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,4).contains("(")?
-                    oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,4))));
-            oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,4).contains("(")?
-                    oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,4))));
+            //5.2(京89号)截取5.2  5.24(京89号)截取5.24
+            if (oilPriceBean.getResult().getBeijing().getGasoline90().length() < 4){
+                //若不含(京89号)文字且为小数点后一位(如5.2)的不截取
+                oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline90())));
+            }else {
+                oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,4).contains("(")?
+                        oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,4))));
+            }
+            if (oilPriceBean.getResult().getBeijing().getGasoline93().length() < 4){
+                oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline93())));
+            }else {
+                oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,4).contains("(")?
+                        oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,4))));
+            }
+            if (oilPriceBean.getResult().getBeijing().getGasoline97().length() < 4){
+                oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline97())));
+            }else {
+                oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,4).contains("(")?
+                        oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,4))));
+            }
             oilPrice0.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getDieselOil0())));
         }else {
             //各个省份油价
@@ -334,10 +347,25 @@ public class OilTodayActivity extends AbsBaseActivity {
                 oilPrice0.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getAnhui().getDieselOil0())));
             }else if (saveProvince.equals("北京")){
                 DecimalFormat df = new DecimalFormat("0.00");
-                //5.2(京89号)截取5.2
-                oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,3))));
-                oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,3))));
-                oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,3))));
+                if (oilPriceBean.getResult().getBeijing().getGasoline90().length() < 4){
+                    //若不含(京89号)文字且为小数点后一位(如5.2)的不截取
+                    oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline90())));
+                }else {
+                    oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,4).contains("(")?
+                            oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline90().substring(0,4))));
+                }
+                if (oilPriceBean.getResult().getBeijing().getGasoline93().length() < 4){
+                    oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline93())));
+                }else {
+                    oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,4).contains("(")?
+                            oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline93().substring(0,4))));
+                }
+                if (oilPriceBean.getResult().getBeijing().getGasoline97().length() < 4){
+                    oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline97())));
+                }else {
+                    oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,4).contains("(")?
+                            oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,3):oilPriceBean.getResult().getBeijing().getGasoline97().substring(0,4))));
+                }
                 oilPrice0.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getBeijing().getDieselOil0())));
             }else if (saveProvince.equals("重庆")){
                 DecimalFormat df = new DecimalFormat("0.00");
@@ -467,12 +495,25 @@ public class OilTodayActivity extends AbsBaseActivity {
                 oilPrice0.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShandong().getDieselOil0())));
             }else if (saveProvince.equals("上海")){
                 DecimalFormat df = new DecimalFormat("0.00");
-                oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline90().substring(0,4).contains("(")?
-                        oilPriceBean.getResult().getShanghai().getGasoline90().substring(0,3):oilPriceBean.getResult().getShanghai().getGasoline90().substring(0,4))));
-                oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline93().substring(0,4).contains("(")?
-                        oilPriceBean.getResult().getShanghai().getGasoline93().substring(0,3):oilPriceBean.getResult().getShanghai().getGasoline93().substring(0,4))));
-                oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline97().substring(0,4).contains("(")?
-                        oilPriceBean.getResult().getShanghai().getGasoline97().substring(0,3):oilPriceBean.getResult().getShanghai().getGasoline97().substring(0,4))));
+                if (oilPriceBean.getResult().getShanghai().getGasoline90().length() < 4){
+                    //若不含(沪89号)文字且为小数点后一位(如5.2)的不截取
+                    oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline90())));
+                }else {
+                    oilPrice90.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline90().substring(0,4).contains("(")?
+                            oilPriceBean.getResult().getShanghai().getGasoline90().substring(0,3):oilPriceBean.getResult().getShanghai().getGasoline90().substring(0,4))));
+                }
+                if (oilPriceBean.getResult().getShanghai().getGasoline93().length() < 4){
+                    oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline93())));
+                }else {
+                    oilPrice93.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline93().substring(0,4).contains("(")?
+                            oilPriceBean.getResult().getShanghai().getGasoline93().substring(0,3):oilPriceBean.getResult().getShanghai().getGasoline93().substring(0,4))));
+                }
+                if (oilPriceBean.getResult().getShanghai().getGasoline97().length() < 4){
+                    oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline97())));
+                }else {
+                    oilPrice97.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getGasoline97().substring(0,4).contains("(")?
+                            oilPriceBean.getResult().getShanghai().getGasoline97().substring(0,3):oilPriceBean.getResult().getShanghai().getGasoline97().substring(0,4))));
+                }
                 oilPrice0.setText(df.format(Double.parseDouble(oilPriceBean.getResult().getShanghai().getDieselOil0())));
             }else if (saveProvince.equals("山西")){
                 DecimalFormat df = new DecimalFormat("0.00");
