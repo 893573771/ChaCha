@@ -1,5 +1,6 @@
 package com.ghy.chacha.activity;
 
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -39,6 +40,10 @@ public class NumberBelongActivity extends AbsBaseActivity {
     EditText etPhoneNumber;
     @Bind(R.id.btn_chaxun)
     Button btnChaXun;
+    @Bind(R.id.tv_number_count)
+    TextView tvNumberCount;
+    @Bind(R.id.tv_number_rec)
+    TextView tvNumberRec;
 
     @Bind(R.id.layout_phone_number_info)
     LinearLayout layoutPhoneInfo;
@@ -128,25 +133,25 @@ public class NumberBelongActivity extends AbsBaseActivity {
                     @Override
                     public void onNext(NumberBelongBean numberBean) {
 
-                        if (numberBean.getRetCode().equals("200")){
+                        if (numberBean.getRetCode().equals("200")) {
 
                             layoutPhoneInfo.setVisibility(View.VISIBLE);
 
                             //成功
-                            tvPhoneCity.setText("所属城市："+numberBean.getResult().getCity());
-                            tvPhoneProvince.setText("所属省份："+numberBean.getResult().getProvince());
-                            tvPhoneCityCode.setText("城市区号："+numberBean.getResult().getCityCode());
-                            tvPhoneOperator.setText("卡运营商："+numberBean.getResult().getOperator());
-                            tvPhoneZipCode.setText("邮政编码："+numberBean.getResult().getZipCode());
+                            tvPhoneCity.setText("所属城市：" + numberBean.getResult().getCity());
+                            tvPhoneProvince.setText("所属省份：" + numberBean.getResult().getProvince());
+                            tvPhoneCityCode.setText("城市区号：" + numberBean.getResult().getCityCode());
+                            tvPhoneOperator.setText("卡运营商：" + numberBean.getResult().getOperator());
+                            tvPhoneZipCode.setText("邮政编码：" + numberBean.getResult().getZipCode());
 
-                            AnimUtils.phoneInfoEnterAnim(layoutPhoneInfo,500);
+                            AnimUtils.phoneInfoEnterAnim(layoutPhoneInfo, 500);
 
 
-                        }else if (numberBean.getRetCode().equals("20101")){
+                        } else if (numberBean.getRetCode().equals("20101")) {
                             //查询不到数据
                             SnackbarUtils.showSnackbarDefault(btnChaXun, "抱歉，未查询到数据！").show();
 
-                        }else if (numberBean.getRetCode().equals("20102")){
+                        } else if (numberBean.getRetCode().equals("20102")) {
                             //手机号码格式错误
                             SnackbarUtils.showSnackbarDefault(btnChaXun, "手机号码有误，请重新输入！").show();
                         }
@@ -179,10 +184,39 @@ public class NumberBelongActivity extends AbsBaseActivity {
             int length = etPhoneNumber.getText().length();
             if (length != 0) {
                 ivClearNumber.setVisibility(View.VISIBLE);
+                tvNumberRec.setVisibility(View.VISIBLE);
             } else {
                 ivClearNumber.setVisibility(View.GONE);
+                tvNumberRec.setVisibility(View.INVISIBLE);
             }
 
+            tvNumberCount.setText(length + "/11");
+            if (length > 11) {
+                tvNumberCount.setTextColor(Color.parseColor("#FF4500"));
+            } else {
+                tvNumberCount.setTextColor(Color.parseColor("#FC8825"));
+            }
+
+            if (length >= 1 && length <= 11) {
+                tvNumberRec.setText("请至少输入手机号的前 7 位");
+                tvNumberRec.setTextColor(Color.parseColor("#FC8825"));
+                if (length >= 2) {
+                    //判断是否是一个手机号
+                    if (!(etPhoneNumber.getText().toString().startsWith("13") ||
+                            etPhoneNumber.getText().toString().startsWith("15") ||
+                            etPhoneNumber.getText().toString().startsWith("18") ||
+                            etPhoneNumber.getText().toString().startsWith("17"))) {
+                        tvNumberRec.setText("这可能并不是一个手机号码！");
+                        tvNumberRec.setTextColor(Color.parseColor("#FF4500"));
+                    } else {
+                        tvNumberRec.setText("请至少输入手机号的前 7 位");
+                        tvNumberRec.setTextColor(Color.parseColor("#FC8825"));
+                    }
+                }
+            } else if (length > 11) {
+                tvNumberRec.setText("您输入的手机号码位数过长！");
+                tvNumberRec.setTextColor(Color.parseColor("#FF4500"));
+            }
 
         }
     }

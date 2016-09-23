@@ -1,156 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.ghy.chacha.activity.NumberBelongActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.ghy.chacha.activity.NumberBelongActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/icon_phone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:text="请输入要查询的手机号码"
+            android:textColor="@color/colorAppOrange"
+            android:textSize="16sp"/>
+    </LinearLayout>
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:src="@mipmap/icon_phone"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|start"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="@dimen/dimen_10"
-                android:layout_weight="1"
-                app:counterEnabled="true"
-                app:counterMaxLength="11"
-                app:counterOverflowTextAppearance="@style/MyOverflowText">
-
-                <EditText
-                    android:id="@+id/et_mobile_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:hint="您要查询的手机号码"
-                    android:imeOptions="actionDone"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:textColor="@color/colorAppOrange"
-                    android:textSize="18sp"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_chaxun"
+        <EditText
+            android:id="@+id/et_mobile_number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/btn_bg_selector_orange_corners"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:text="查询"/>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_height="50dp"
             android:layout_marginLeft="@dimen/dimen_20"
             android:layout_marginRight="@dimen/dimen_20"
-            android:layout_marginBottom="@dimen/dimen_10"
-            app:cardBackgroundColor="@color/colorAppOrangeAlpha"
-            app:cardCornerRadius="10dp">
+            android:background="@drawable/et_bg_selector_orange"
+            android:gravity="center_vertical"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/dimen_14"
+            android:textColor="@color/colorAppOrange"
+            android:textSize="20sp"/>
+
+        <ImageView
+            android:id="@+id/iv_clear_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/dimen_30"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:src="@mipmap/et_clear"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_number_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_50"
+            android:layout_weight="1"
+            android:text="提示信息"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            android:textColor="@color/colorAppOrange"
+            android:textSize="12sp"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:id="@+id/tv_number_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_40"
+            android:text="0/11"
+            android:textColor="@color/colorAppOrange"
+            android:textSize="14sp"
+            android:textStyle="italic"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_chaxun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_bg_selector_orange_corners"
+        android:text="查询"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:layout_marginLeft="@dimen/dimen_20"
+        android:layout_marginRight="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_20"
+        app:cardBackgroundColor="@color/colorAppOrangeAlpha"
+        app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:id="@+id/layout_phone_number_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_20"
+            android:orientation="vertical"
             android:paddingLeft="@dimen/dimen_10"
             android:visibility="gone"
-            tools:visibility="visible"
-            android:layout_margin="@dimen/dimen_20"
-            android:orientation="vertical">
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/tv_phone_province"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:text="所属省份"
                 android:textColor="@color/white"
-                android:text="所属省份"/>
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tv_phone_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
                 android:layout_marginTop="@dimen/dimen_10"
-                android:text="所属城市"/>
+                android:text="所属城市"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tv_phone_city_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
                 android:layout_marginTop="@dimen/dimen_10"
-                android:text="城市区号"/>
+                android:text="城市区号"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tv_phone_zip_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
                 android:layout_marginTop="@dimen/dimen_10"
-                android:text="邮政编码"/>
+                android:text="邮政编码"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tv_phone_operator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
                 android:layout_marginTop="@dimen/dimen_10"
-                android:text="卡运营商"/>
+                android:text="卡运营商"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
 
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/iv_clear_phone_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginRight="@dimen/dimen_20"
-        android:layout_marginTop="@dimen/dimen_40"
-        android:src="@mipmap/et_clear"
-        android:visibility="gone"
-        tools:visibility="visible"/>
-
-</FrameLayout>
+</LinearLayout>
