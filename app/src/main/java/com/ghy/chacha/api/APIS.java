@@ -29,5 +29,15 @@ public class APIS {
      */
     public static final String OIL_TODAY = "oil/price/province/query";
 
+    /**
+     * 微信精选 分类
+     */
+    public static final String WE_CHAT_TYPE = "wx/article/category/query";
+
+    /**
+     * 微信精选 列表
+     */
+    public static final String WE_CHAT_LIST = "wx/article/search";
+
 
 }

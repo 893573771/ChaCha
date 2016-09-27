@@ -3,6 +3,8 @@ package com.ghy.chacha.api;
 import com.ghy.chacha.bean.HisTodBean;
 import com.ghy.chacha.bean.NumberBelongBean;
 import com.ghy.chacha.bean.OilPriceBean;
+import com.ghy.chacha.bean.WeChatListBean;
+import com.ghy.chacha.bean.WeChatTypeBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -46,6 +48,28 @@ public class ApiService {
 
         @GET(APIS.OIL_TODAY)
         Observable<OilPriceBean> getOilPriceInfo(@Query("key") String appKey);
+
+    }
+
+    /**
+     * 微信精选分类api接口
+     * http://apicloud.mob.com/wx/article/category/query?key=123456
+     */
+    public interface WeChatTypeService {
+
+        @GET(APIS.WE_CHAT_TYPE)
+        Observable<WeChatTypeBean> getWeChatTypeInfo(@Query("key") String appKey);
+
+    }
+
+    /**
+     * 微信精选列表api接口
+     * http://apicloud.mob.com/wx/article/search?key=123456&cid=1
+     */
+    public interface WeChatListService {
+
+        @GET(APIS.WE_CHAT_LIST)
+        Observable<WeChatListBean> getWeChatListInfo(@Query("key") String appKey, @Query("cid") String cid);
 
     }
 }

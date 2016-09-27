@@ -4,14 +4,12 @@
     android:layout_height="match_parent"
     android:padding="@dimen/dimen_20">
 
-
     <TextView
+        android:id="@+id/tv_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorAccent"
         android:layout_centerInParent="true"
-        android:text="I am Fragment 4"/>
+        android:textSize="20sp"
+        android:text="页面"/>
 
 </RelativeLayout>
