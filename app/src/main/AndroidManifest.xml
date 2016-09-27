@@ -31,6 +31,7 @@
         <activity android:name=".activity.IdentityCardActivity"/>
         <activity android:name=".activity.HistoryTodayActivity"/>
         <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.WebViewActivity"/>
         <activity android:name=".activity.HistoryTodayDetailActivity">
         </activity>
         <activity android:name=".activity.WeChatArticleActivity">
