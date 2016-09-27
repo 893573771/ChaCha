@@ -69,6 +69,15 @@ public class WeChatPageFragment extends AbsBaseRefreshRecyclerFragment {
         return true;
     }
 
+    /**
+     * 是否加载更多，暂时关闭
+     * @return
+     */
+    @Override
+    protected boolean isOpenLoadMore() {
+        return false;
+    }
+
     @Override
     protected BaseQuickAdapter getAbsQuickAdapter() {
         return new WeChatListAdapter(getActivity(),list);
