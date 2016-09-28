@@ -54,6 +54,11 @@ public class WeChatArticleActivity extends AbsBaseActivity implements OnTabSelec
     }
 
     @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
+    @Override
     protected void init() {
 
         setActivityStatus(ACTIVITY_STATUS_LOADING);

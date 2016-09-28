@@ -1,6 +1,7 @@
 package com.ghy.chacha.fragment;
 
 import android.os.Handler;
+import android.view.View;
 
 import com.ghy.baseapp.adapter.baserecycler.BaseQuickAdapter;
 import com.ghy.baseapp.api.RetrofitHelper;
@@ -23,6 +24,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 import static com.ghy.baseapp.base.AbsBaseActivity.ACTIVITY_STATUS_ERROR;
+import static com.ghy.baseapp.base.AbsBaseActivity.ACTIVITY_STATUS_SUCCESS;
 
 /**
  * Created by GHY on 2016/9/27.
@@ -92,7 +94,7 @@ public class WeChatPageFragment extends AbsBaseRefreshRecyclerFragment {
                 setOnRefreshComplete(list);
                 ToastHelper.getInstance().showToast("刷新成功");
             }
-        }, 3000);
+        }, 2000);
     }
 
     @Override
@@ -159,6 +161,7 @@ public class WeChatPageFragment extends AbsBaseRefreshRecyclerFragment {
                             setFragmentStatus(FRAGMENT_STATUS_EMPTY);
                             return;
                         }
+                        setFragmentStatus(ACTIVITY_STATUS_SUCCESS);
                         //设置数据源
                         list = weChatListBean.getResult().getList();
                         setData(list);
@@ -174,4 +177,17 @@ public class WeChatPageFragment extends AbsBaseRefreshRecyclerFragment {
 
     }
 
+    @Override
+    protected void onEmptyClick(View view) {
+        super.onEmptyClick(view);
+        //重新请求
+        load();
+    }
+
+    @Override
+    protected void onErrorClick(View view) {
+        super.onErrorClick(view);
+        //重新请求
+        load();
+    }
 }

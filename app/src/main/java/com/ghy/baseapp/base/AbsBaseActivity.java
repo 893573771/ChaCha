@@ -18,6 +18,8 @@ import com.ghy.baseapp.utils.AnimUtils;
 import com.ghy.chacha.R;
 
 import butterknife.ButterKnife;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 
 /**
  * Created by GHY on 2016/4/29.
@@ -60,6 +62,11 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      * 子类添加的View
      */
     private View mSonView;
+    /**
+     * 手势返回
+     */
+    private SwipeBackLayout mSwipeBackLayout;
+    private SwipeBackActivityHelper mHelper;
 
     /**
      * 获取布局ID
@@ -168,6 +175,15 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         return "";
     }
 
+    /**
+     * 是否开启手势返回
+     *
+     * @return
+     */
+    protected boolean isOpenSwipeBack() {
+        return false;
+    }
+
 
     /**
      * 无网络点击事件
@@ -214,10 +230,30 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         }
         //初始化ToolBar
         initToolBar();
+        //初始化手势返回
+        initSwipeBack();
         //初始化ButterKnife
         ButterKnife.bind(this);
         //初始化
         init();
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if (mHelper != null) mHelper.onPostCreate();
+    }
+
+    /**
+     * 初始化手势返回
+     */
+    private void initSwipeBack() {
+        if (isOpenSwipeBack()){
+            mHelper = new SwipeBackActivityHelper(this);
+            mHelper.onActivityCreate();
+            mSwipeBackLayout = mHelper.getSwipeBackLayout();
+            mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+        }
     }
 
     /**

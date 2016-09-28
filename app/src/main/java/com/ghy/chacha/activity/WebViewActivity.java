@@ -42,6 +42,11 @@ public class WebViewActivity extends AbsBaseActivity {
         return title == null ? "内容详情" : title;
     }
 
+    @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
     /**
      * 根据url加载h5
      */

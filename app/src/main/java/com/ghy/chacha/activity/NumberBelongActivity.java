@@ -72,6 +72,11 @@ public class NumberBelongActivity extends AbsBaseActivity {
     }
 
     @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
+    @Override
     protected void init() {
 
         //添加输入监听

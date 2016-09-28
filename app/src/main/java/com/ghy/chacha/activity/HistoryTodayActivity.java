@@ -45,6 +45,11 @@ public class HistoryTodayActivity extends AbsBaseActivity {
     }
 
     @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
+    @Override
     protected void init() {
 
         setActivityStatus(ACTIVITY_STATUS_LOADING);

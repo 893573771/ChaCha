@@ -34,6 +34,11 @@ public class HistoryTodayDetailActivity extends AbsBaseActivity {
     }
 
     @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
+    @Override
     protected void init() {
         tvDetailTitle.setText(title);
         tvDetailContent.setText(content);

@@ -8,7 +8,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -127,6 +126,11 @@ public class OilTodayActivity extends AbsBaseActivity {
     }
 
     @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
+    @Override
     protected void init() {
 
         //获取保存的省份信息
@@ -210,17 +214,18 @@ public class OilTodayActivity extends AbsBaseActivity {
                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 
         //设置背景颜色变暗
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = 0.5f;
-        getWindow().setAttributes(lp);
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                WindowManager.LayoutParams lp = getWindow().getAttributes();
-                lp.alpha = 1f;
-                getWindow().setAttributes(lp);
-            }
-        });
+        //此处和滑动返回设置的AppTheme背景透明有冲突
+//        WindowManager.LayoutParams lp = getWindow().getAttributes();
+//        lp.alpha = 0.5f;
+//        getWindow().setAttributes(lp);
+//        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//            @Override
+//            public void onDismiss() {
+//                WindowManager.LayoutParams lp = getWindow().getAttributes();
+//                lp.alpha = 1f;
+//                getWindow().setAttributes(lp);
+//            }
+//        });
 
         //加载省份列表
         initWheelView(wheelView);
