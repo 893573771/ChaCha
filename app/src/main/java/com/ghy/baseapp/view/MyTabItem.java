@@ -119,14 +119,16 @@ public class MyTabItem extends View {
 
     private void drawBitmap(Canvas canvas) {
         int left = (mViewWidth - mIconNormal.getWidth()) / 2;
-        int top = (mViewHeight - mIconNormal.getHeight() - mBoundText.height()) / 2;
+//        int top = (mViewHeight - mIconNormal.getHeight() - mBoundText.height()) / 2;
+        int top = (mViewHeight - mIconNormal.getHeight() - mBoundText.height()) / 4;
         canvas.drawBitmap(mIconNormal, left, top, mIconPaintNormal);
         canvas.drawBitmap(mIconSelect, left, top, mIconPaintSelect);
     }
 
     private void drawText(Canvas canvas) {
         float x = (mViewWidth - mBoundText.width()) / 2.0f;
-        float y = (mViewHeight + mIconNormal.getHeight() + mBoundText.height()) / 2.0F + 12;
+//        float y = (mViewHeight + mIconNormal.getHeight() + mBoundText.height()) / 2.0F + 12;
+        float y = (mViewHeight + mIconNormal.getHeight() + mBoundText.height()) / 2.0F;
         canvas.drawText(mTextValue, x, y, mTextPaintNormal);
         canvas.drawText(mTextValue, x, y, mTextPaintSelect);
     }

@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_4"
                 android:drawablePadding="@dimen/dimen_4"
-                android:drawableTop="@drawable/index_tabhost_selector_car"
+                android:drawableTop="@drawable/index_tabhost_selector_home"
                 android:text="爱车" />
 
             <RadioButton
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_4"
                 android:drawablePadding="@dimen/dimen_4"
-                android:drawableTop="@drawable/index_tabhost_selector_message"
+                android:drawableTop="@drawable/index_tabhost_selector_home"
                 android:text="消息" />
 
             <RadioButton
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_4"
                 android:drawablePadding="@dimen/dimen_4"
-                android:drawableTop="@drawable/index_tabhost_selector_me"
+                android:drawableTop="@drawable/index_tabhost_selector_home"
                 android:text="我" />
 
         </RadioGroup>
